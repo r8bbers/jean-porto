@@ -1,38 +1,47 @@
-import React, {useState}from "react";
-import {TfiAlignJustify, TfiAlignRight} from 'react-icons/tfi'
+import { useState, useEffect } from "react";
 
 const Navbar = () => {
-    const [nav, setNav] = useState(false);
-    
-    const handleNav = () => {
-        setNav(!nav)
-    }
+  const [show, setShow] = useState(false);
 
-    return (
-        <div className=' flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-black'>
-            <h1 className='w-full text-3xl font-bold text-[#000]'>Jeany Florencia</h1>
-            <ul className='flex hidden'>
-                <li className='p-4'>Home</li>
-                <li className='p-4'>Profile</li>
-                <li className='p-4'>Projects</li>
-                <li className='p-4'>Contact</li>
-            </ul>
+  useEffect(() => {
+    const handleScroll = () => {
+      setShow(window.scrollY > 150);
+    };
 
-            <div onClick={handleNav}>
-                {!nav ? <TfiAlignRight size={20}/> : <TfiAlignJustify size={20}/>}
-            </div>
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-            <div className={!nav ? 'fixed left-0 top-0 w-[60%] h-full border-r border-r-gray-900 bg-[#F8F1DE] ease-in-out duration-500' : 'fixed left-[-100%]'}>
-                <h1 className='w-full text-3xl font-bold text-[#000] m-4'>Jeany Florencia</h1>
-                <ul className='uppercase p-4'>
-                    <li className='p-4 border-b border-white'>Home</li>
-                    <li className='p-4 border-b border-white'>Profile</li>
-                    <li className='p-4 border-b border-white'>Projects</li>
-                    <li className='p-4 border-b border-white'>Contact</li>
-                </ul>
-            </div>
-        </div>
-    )
-}
+  return (
+    <div
+      className={`fixed z-50 transition-all duration-500 p-8 ${
+        show
+          ? "top-2 left-10 right-10 bg-[#F2E1E0]/90 backdrop-blur-md shadow-lg rounded-full py-2 px-6"
+          : "top-0 left-0 right-0 bg-[#F2E1E0] py-2 px-12"
+      }`}
+    >
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-0">
+        <h1
+          className={`text-2xl md:text-4xl font-bold text-black transition-all duration-900 ${
+            show ? "hidden md:block" : "block"
+          }`}
+        >
+          Jeany Florencia
+        </h1>
+        <ul
+          className={`flex justify-center items-center gap-6 text-black font-[cursive] text-lg md:text-xl transition-all duration-500`}
+        >
+          {["Profile", "Project", "Contact"].map((item, i) => (
+            <li>
+              <a href="#" className="hover:underline transition duration-300">
+                {item}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+};
 
-export default Navbar
+export default Navbar;

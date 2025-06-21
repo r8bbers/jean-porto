@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
-body {
-    background-color: #F8F1DE;
+@layer base{
+  h1, h2, li{
+    font-family: "Sacramento", sans-serif;
+  }
+  
+  p{
+    font-family: "Alice", sans-serif;
+  }
 }
