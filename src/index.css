@@ -1,11 +1,12 @@
 @import "tailwindcss";
 
 @layer base{
-  h1, h2, li{
-    font-family: "Sacramento", sans-serif;
+  h1, h2, li,p{
+    font-family: "Archivo", sans-serif;
   }
-  
-  p{
-    font-family: "Alice", sans-serif;
-  }
+
+  html {
+  scroll-behavior: smooth;
+}
+
 }
