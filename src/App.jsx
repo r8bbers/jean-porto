@@ -5,9 +5,11 @@ import bgImage from "./assets/bubbles-bg.png";
 import descImage from "./assets/descriptionImage.png";
 import { Typewriter } from 'react-simple-typewriter';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay } from 'swiper/modules';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/autoplay';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import projectImage from "./assets/projectImg.png";
 import dummyImage from "./assets/dummyImg.jpg"
 import javaLogo from './assets/javaLogo.png';
@@ -22,6 +24,7 @@ import cLogo from './assets/cLogo.png';
 import figmaLogo from './assets/figmaLogo.png';
 import githubLogo from './assets/githubLogo.png';
 import bootstrapLogo from './assets/bootstrapLogo.png';
+import webReuse from './assets/webReuse.png';
 import { useForm, ValidationError } from '@formspree/react';
 import React, { useState, useEffect, useRef } from "react";
 
@@ -132,9 +135,13 @@ function App() {
           
           {/* Download CV Button */}
           <div className="mt-5">
-            <button className="bg-[#005D90] text-white rounded-xl py-1 px-4">
+            <a 
+              href="/CV_Jeany Florencia.pdf" 
+              download 
+              className="bg-[#005D90] text-white rounded-xl py-1 px-4 inline-block"
+            >
               Download CV
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -226,14 +233,34 @@ function App() {
          
           {/* Project 1 */}
           <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-            <img src={dummyImage} alt="Project 1" className="w-full md:w-[300px] rounded-xl border-4 border-[#005D90]" />
+            
+            {/* Carousel Image */}
+            <div className="w-full md:w-[500px] rounded-xl border-4 border-[#005D90] overflow-hidden">
+              <Swiper
+                modules={[ Pagination, Autoplay]}
+                
+                pagination={{ clickable: true }}
+                loop={true}
+                autoplay={{ delay:3000, disableOnInteraction: false }}
+              >
+                <SwiperSlide>
+                  <img src={webReuse} alt="Project 1 - Slide 1" className="w-full h-auto" />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img src={webReuse} alt="Project 1 - Slide 2" className="w-full h-auto" />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img src={webReuse} alt="Project 1 - Slide 3" className="w-full h-auto" />
+                </SwiperSlide>
+              </Swiper>
+            </div>
+
             <div className="flex-1">
               <h2 className="text-2xl font-bold flex items-center gap-3">
                 ReUseMart (Website) <span className="flex-grow h-[2px] bg-[#005D90]"></span>
               </h2>
               <p className="mt-2 text-sm">
-                ReUseMart is a Website specially made for Mr.X as a client. ReUseMart is a third party e-commerce focused on
-                reselling stuffs from user. 
+                ReUseMart is a website based e-commerce made as a capstone project for Software Development Project course. Made by team of 3, ReUseMart is an e-commerce with focus on selling secondhand stuffs. With React Vite, I managed to create sign-up system, reset password method, seller profile, and also purchase transaction.
               </p>
               <div className="flex gap-2 mt-4">
                 <span className="bg-[#005D90] text-white px-3 py-1 rounded-full text-xs">React Vite</span>
@@ -242,45 +269,87 @@ function App() {
               </div>
             </div>
           </div>
+          {/* End of Project 1 */}
 
-          {/* Project 2 - reversed layout */}
+          {/* Project 2 */}
           <div className="flex flex-col md:flex-row-reverse items-center md:items-start gap-6">
-            <img src={dummyImage} alt="Project 2" className="w-full md:w-[300px] rounded-xl border-4 border-[#005D90]" />
+            
+            {/* Carousel Image */}
+            <div className="w-full md:w-[500px] rounded-xl border-4 border-[#005D90] overflow-hidden">
+              <Swiper
+                modules={[ Pagination, Autoplay]}
+                
+                pagination={{ clickable: true }}
+                loop={true}
+                autoplay={{ delay:3000, disableOnInteraction: false }}
+              >
+                <SwiperSlide>
+                  <img src={webReuse} alt="Project 1 - Slide 1" className="w-full h-auto" />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img src={webReuse} alt="Project 1 - Slide 2" className="w-full h-auto" />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img src={webReuse} alt="Project 1 - Slide 3" className="w-full h-auto" />
+                </SwiperSlide>
+              </Swiper>
+            </div>
+
             <div className="flex-1">
               <h2 className="text-2xl font-bold flex items-center gap-3">
-                <span className="flex-grow h-[2px] bg-[#005D90]"></span> ReUseMart (Mobile)
+                ReUseMart (Mobile) <span className="flex-grow h-[2px] bg-[#005D90]"></span>
               </h2>
               <p className="mt-2 text-sm">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus fermentum ultrices tellus, 
-                et laoreet quam placerat condimentum. Duis aliquam, lectus a bibendum laoreet, eros magna 
-                vehicula sapien, sit amet porta sem purus fringilla odio.
+                ReUseMart is a website based e-commerce made as a capstone project for Software Development Project course. Made by team of 3, ReUseMart is an e-commerce with focus on selling secondhand stuffs. With React Native, I managed to create log in system for all role, and also focused on courier functionality, such as profile, page contains list of packages to deliver, and also history of package sent by the courier.
               </p>
               <div className="flex gap-2 mt-4">
                 <span className="bg-[#005D90] text-white px-3 py-1 rounded-full text-xs">React Native</span>
-                <span className="bg-[#005D90] text-white px-3 py-1 rounded-full text-xs">Tailwind CSS</span>
+                <span className="bg-[#005D90] text-white px-3 py-1 rounded-full text-xs">Laravel</span>
                 <span className="bg-[#005D90] text-white px-3 py-1 rounded-full text-xs">MySQL</span>
               </div>
             </div>
           </div>
+          {/* End of Project 2 */}
 
           {/* Project 3 */}
-          <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-            <img src={dummyImage} alt="Project 3" className="w-full md:w-[300px] rounded-xl border-4 border-[#005D90]" />
+          {/* <div className="flex flex-col md:flex-row items-center md:items-start gap-6"> */}
+            
+            {/* Carousel Image */}
+            {/* <div className="w-full md:w-[300px] rounded-xl border-4 border-[#005D90] overflow-hidden">
+              <Swiper
+                modules={[ Pagination, Autoplay]}
+                
+                pagination={{ clickable: true }}
+                loop={true}
+                autoplay={{ delay:3000, disableOnInteraction: false }}
+              >
+                <SwiperSlide>
+                  <img src={webReuse} alt="Project 1 - Slide 1" className="w-full h-auto" />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img src={webReuse} alt="Project 1 - Slide 2" className="w-full h-auto" />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img src={webReuse} alt="Project 1 - Slide 3" className="w-full h-auto" />
+                </SwiperSlide>
+              </Swiper>
+            </div>
+
             <div className="flex-1">
               <h2 className="text-2xl font-bold flex items-center gap-3">
-                PROJECT 3 <span className="flex-grow h-[2px] bg-[#005D90]"></span>
+                ReUseMart (Website) <span className="flex-grow h-[2px] bg-[#005D90]"></span>
               </h2>
               <p className="mt-2 text-sm">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus fermentum ultrices tellus, 
-                et laoreet quam placerat condimentum. Duis aliquam, lectus a bibendum laoreet, eros magna 
-                vehicula sapien, sit amet porta sem purus fringilla odio.
+                ReUseMart is a website based e-commerce made as a capstone project for Software Development Project course. Made by team of 3, ReUseMart is an e-commerce with focus on selling secondhand stuffs. With React Vite, I managed to create sign-up system, reset password method, seller profile, and also purchase transaction.
               </p>
               <div className="flex gap-2 mt-4">
-                <span className="bg-[#005D90] text-white px-3 py-1 rounded-full text-xs">React</span>
-                <span className="bg-[#005D90] text-white px-3 py-1 rounded-full text-xs">Tailwind</span>
+                <span className="bg-[#005D90] text-white px-3 py-1 rounded-full text-xs">React Vite</span>
+                <span className="bg-[#005D90] text-white px-3 py-1 rounded-full text-xs">Laravel</span>
+                <span className="bg-[#005D90] text-white px-3 py-1 rounded-full text-xs">MySQL</span>
               </div>
             </div>
-          </div>
+          </div> */}
+          {/* End of Project 3 */}
 
         </section>
     {/* End of Project Section */}
